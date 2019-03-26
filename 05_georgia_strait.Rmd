@@ -1,7 +1,7 @@
 ---
 title: Georgia Strait Air Zone
 output:
-  pdf_document:
+  tufte::tufte_handout:
     latex_engine: lualatex
     fig_caption: true
     includes:
@@ -41,12 +41,6 @@ annual_pm25 <- params$annual_pm25 %>%
   filter(airzone == !!airzone)  
 ```
 
-<!-- Airzone map-->
-
-```{r airzone-map, fig.width = 3, fig.cap = paste(airzone, "Air Zone")}
-airzone_map(airzone)
-```
-
 ## Introduction
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet ultrices
@@ -56,16 +50,11 @@ mus. Ut ac diam lectus. Nullam non tincidunt leo. Quisque sed egestas mauris,
 vitae feugiat neque. Quisque eu vestibulum enim. Nam convallis nec nunc ut
 rutrum. Fusce laoreet convallis scelerisque.
 
-```{=latex}
-\begin{wrapfigure}{R}{.6\textwidth}
-```
 
-```{r airzone-map, fig.align = "center", out.width = "90%", fig.cap = "Map of air zone"}
-knitr::include_graphics("placeholdermap.png")
-```
+<!-- Airzone map-->
 
-```{=latex}
-\end{wrapfigure}
+```{r airzone-map, fig.margin = TRUE, fig.cap = paste(airzone, "Air Zone")}
+airzone_map(airzone)
 ```
 
 ## Background
@@ -79,17 +68,8 @@ in purus vitae bibendum. Morbi bibendum tempus lectus sed egestas.
 
 <!-- Ozone by station -->
 
-```{=latex}
-\newpage
-\begin{wrapfigure}{R}{.6\textwidth}
-```
-
-```{r ozone-by-station, fig.width = 4.5, fig.asp = 0.618, fig.cap = ozone_by_station_cap(airzone, ozone)}
+```{r ozone-by-station, fig.asp = 1, fig.margin = TRUE, fig.cap = ozone_by_station_cap(airzone, ozone)}
 plot_ozone_by_station(ozone, airzone)
-```
-
-```{=latex}
-\end{wrapfigure}
 ```
 
 ## Ozone
@@ -108,31 +88,17 @@ ut dapibus condimentum.
 
 <!-- Annual trends in ozone concentrations -->
 
-```{=latex}
-\begin{wrapfigure}{C}{\textwidth}
-```
-
-```{r annual-ozone, fig.width = 6, fig.cap = annual_ozone_cap(annual_ozone)}
+```{r annual-ozone, fig.width = 9, fig.fullwidth = TRUE, fig.height = 4, fig.cap = annual_ozone_cap(annual_ozone)}
 plot_ozone_station_timeseries(annual_ozone, airzone)
 ```
 
-```{=latex}
-\end{wrapfigure}
-```
+\clearpage
 
 <!-- PM2.5 by station -->
 
-```{=latex}
-\newpage
-\begin{wrapfigure}{R}{.6\textwidth}
-```
 
-```{r pm25-by-station, fig.width = 5, fig.asp = 1.2, fig.cap = pm25_by_station_cap(airzone, pm25)}
+```{r pm25-by-station, fig.asp = 2, fig.margin = TRUE, fig.cap = pm25_by_station_cap(airzone, pm25)}
 plot_pm25_by_station(pm25)
-```
-
-```{=latex}
-\end{wrapfigure}
 ```
 
 ## PM$_{2.5}$ levels
@@ -162,25 +128,11 @@ libero ultricies aliquam.
 
 <!-- PM Annual trends in PM 2.5 -->
 
-```{=latex}
-\begin{wrapfigure}{C}{\textwidth}
-```
-
-```{r annual-pm25, fig.width = 6, fig.cap = annual_pm25_cap(annual_pm25)}
+```{r annual-pm25, fig.width = 9, fig.fullwidth = TRUE, fig.height= 4, fig.cap = annual_pm25_cap(annual_pm25)}
 plot_pm25_station_timeseries(annual_pm25, airzone)
 ```
 
-```{=latex}
-\end{wrapfigure}
-```
-
-<!-- Summary of ozone concentrations as measured and air zone management levels -->
-
-```{=latex}
-\newpage
-```
-
-## \newpage Air Zone Management Levels
+## Air Zone Management Levels
 
 Aenean in pellentesque justo, finibus tincidunt tortor. Nulla ac rutrum lorem.
 Sed mattis a ex id fermentum. Proin eget neque aliquet, maximus nisi at, mollis
@@ -196,15 +148,13 @@ sit amet tempor lacus. Vivamus nec erat id sem viverra bibendum auctor non sem.
 Orci varius natoque penatibus et magnis dis parturient montes, nascetur
 ridiculus mus.
 
+<!-- Summary of ozone concentrations as measured and air zone management levels -->
+
 ```{r table-2}
 create_ozone_table(ozone, airzone)
 ```
 
 <!-- Summary of PM2.5 concentrations as measured and air zone management levels -->
-
-```{=latex}
-\newpage
-```
 
 ```{r table-3}
 create_pm25_table(pm25, airzone)

@@ -86,7 +86,10 @@ plot_ozone_by_station <- function(data, airzone, caaqs = 63) {
       title = paste0(airzone, " Air Zone ", ozone_year)
     ) +
     coord_flip() +
-    theme(plot.title = element_text(hjust = 0.5))
+    theme(
+      plot.title = element_text(hjust = 0.5),
+      legend.position = "bottom"
+    )
 }
 
 ## Annual trends in ozone concentration (annual 4th highest daily 8-hour maxima)
@@ -152,9 +155,15 @@ plot_pm25_by_station <- function(data, caaqs_24h = 28, caaqs_annual = 10) {
       fill = "Instrument",
       title = "24-Hr PM2.5"
     ) +
+    guides(
+      fill = guide_legend(order = 2),
+      linetype = guide_legend(order = 1)
+    ) +
     theme(
       plot.margin = unit(c(2, 0, 0, 0), "lines"),
-      plot.title = element_text(hjust = 0.5)
+      plot.title = element_text(hjust = 0.5),
+      legend.position = "bottom",
+      legend.direction = "vertical"
     ) +
     coord_flip(clip = "off")
 
@@ -184,10 +193,16 @@ plot_pm25_by_station <- function(data, caaqs_24h = 28, caaqs_annual = 10) {
       fill = "Instrument",
       title = "Annual PM2.5"
     ) +
+    guides(
+      fill = guide_legend(order = 2),
+      linetype = guide_legend(order = 1)
+    ) +
     theme(
       plot.margin = unit(c(2, 0, 0, 0), "lines"),
       plot.title = element_text(hjust = 0.5),
-      axis.title.x = element_text(margin = margin(t = 20))
+      axis.title.x = element_text(margin = margin(t = 20)),
+      legend.position = "bottom",
+      legend.direction = "vertical"
     ) +
     coord_flip(clip = "off")
 
