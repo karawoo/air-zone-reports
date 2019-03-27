@@ -66,12 +66,9 @@ torquent per conubia nostra, per inceptos himenaeos. In consequat urna id velit
 dignissim, quis sagittis nunc volutpat. Fusce non facilisis ligula. Nulla mollis
 in purus vitae bibendum. Morbi bibendum tempus lectus sed egestas.
 
-<!-- Ozone by station -->
+\clearpage
 
-```{r ozone-by-station, fig.asp = 1, fig.margin = TRUE, fig.cap = ozone_by_station_cap(airzone, ozone)}
-plot_ozone_by_station(ozone, airzone)
-```
-
+```{marginfigure, echo = TRUE}
 ## Ozone
 
 Suspendisse sed dictum est. Fusce vitae sollicitudin enim. Maecenas nisi nisi,
@@ -85,22 +82,23 @@ vel neque lacinia, euismod ante ut, porttitor ligula. Aenean varius lorem id
 nisl mollis, in sollicitudin quam viverra. Mauris sit amet mauris ut felis
 facilisis hendrerit. Nulla eu commodo ipsum, et cursus arcu. Cras pretium tortor
 ut dapibus condimentum.
+```
+
+
+<!-- Ozone by station -->
+
+```{r ozone-by-station, fig.asp = 1, fig.cap = ozone_by_station_cap(airzone, ozone)}
+plot_ozone_by_station(ozone, airzone)
+```
 
 <!-- Annual trends in ozone concentrations -->
 
-```{r annual-ozone, fig.width = 9, fig.fullwidth = TRUE, fig.height = 4, fig.cap = annual_ozone_cap(annual_ozone)}
+```{r annual-ozone, fig.width = 9, fig.height = 4, fig.cap = annual_ozone_cap(annual_ozone)}
 plot_ozone_station_timeseries(annual_ozone, airzone)
 ```
 
-\clearpage
 
-<!-- PM2.5 by station -->
-
-
-```{r pm25-by-station, fig.asp = 2, fig.margin = TRUE, fig.cap = pm25_by_station_cap(airzone, pm25)}
-plot_pm25_by_station(pm25)
-```
-
+```{marginfigure, echo = TRUE}
 ## PM$_{2.5}$ levels
 
 Aliquam non condimentum mauris. Integer non nunc ut lacus luctus ullamcorper.
@@ -124,11 +122,18 @@ dui. Proin a feugiat eros. Donec ultrices rutrum porttitor. Proin tempor urna ac
 nunc faucibus volutpat. Nunc pharetra orci a mi tristique pharetra. Suspendisse
 vel velit eu justo porttitor tincidunt sed scelerisque nunc. Morbi id justo at
 libero ultricies aliquam.
+```
 
+<!-- PM2.5 by station -->
+
+
+```{r pm25-by-station, fig.asp = 2, fig.cap = pm25_by_station_cap(airzone, pm25)}
+plot_pm25_by_station(pm25)
+```
 
 <!-- PM Annual trends in PM 2.5 -->
 
-```{r annual-pm25, fig.width = 9, fig.fullwidth = TRUE, fig.height= 4, fig.cap = annual_pm25_cap(annual_pm25)}
+```{r annual-pm25, fig.width = 9, fig.height= 4, fig.cap = annual_pm25_cap(annual_pm25)}
 plot_pm25_station_timeseries(annual_pm25, airzone)
 ```
 
